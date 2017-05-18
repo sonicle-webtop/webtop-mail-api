@@ -32,31 +32,27 @@
  */
 package com.sonicle.webtop.mail.model;
 
-import com.sonicle.mail.sieve.SieveRule;
-import com.sonicle.mail.sieve.SieveMatch;
-import com.sonicle.mail.sieve.SieveAction;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
+import com.sonicle.mail.sieve.SieveVacation;
+import org.joda.time.DateTime;
 
 /**
  *
  * @author malbinola
  */
-public class MailFilter {
-	protected Integer filterId;
-	protected Boolean enabled;
-	protected Short order;
-	protected String name;
-	protected SieveMatch sieveMatch;
-	protected SieveRuleList sieveRules = new SieveRuleList();
-	protected SieveActionList sieveActions = new SieveActionList();
-
-	public Integer getFilterId() {
-		return filterId;
-	}
-
-	public void setFilterId(Integer filterId) {
-		this.filterId = filterId;
+public class AutoResponder {
+	private Boolean enabled;
+	private String subject;
+	private String message;
+	private String addresses;
+	private Short daysInterval;
+	private DateTime activationStartDate;
+	private DateTime activationEndDate;
+	private Boolean skipMailingLists;
+	
+	public AutoResponder() {
+		enabled = false;
+		daysInterval = 7;
+		skipMailingLists = false;
 	}
 
 	public Boolean getEnabled() {
@@ -67,66 +63,71 @@ public class MailFilter {
 		this.enabled = enabled;
 	}
 
-	public Short getOrder() {
-		return order;
+	public String getSubject() {
+		return subject;
 	}
 
-	public void setOrder(Short order) {
-		this.order = order;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
-	public String getName() {
-		return name;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
-	public SieveMatch getSieveMatch() {
-		return sieveMatch;
+	public String getAddresses() {
+		return addresses;
 	}
 
-	public void setSieveMatch(SieveMatch sieveMatch) {
-		this.sieveMatch = sieveMatch;
+	public void setAddresses(String addresses) {
+		this.addresses = addresses;
+	}
+
+	public Short getDaysInterval() {
+		return daysInterval;
+	}
+
+	public void setDaysInterval(Short daysInterval) {
+		this.daysInterval = daysInterval;
+	}
+
+	public DateTime getActivationStartDate() {
+		return activationStartDate;
+	}
+
+	public void setActivationStartDate(DateTime activationStartDate) {
+		this.activationStartDate = activationStartDate;
+	}
+
+	public DateTime getActivationEndDate() {
+		return activationEndDate;
+	}
+
+	public void setActivationEndDate(DateTime activationEndDate) {
+		this.activationEndDate = activationEndDate;
+	}
+
+	public Boolean getSkipMailingLists() {
+		return skipMailingLists;
+	}
+
+	public void setSkipMailingLists(Boolean skipMailingLists) {
+		this.skipMailingLists = skipMailingLists;
 	}
 	
-	public SieveRuleList getSieveRules() {
-		return sieveRules;
-	}
-
-	public void setSieveRules(SieveRuleList sieveRules) {
-		this.sieveRules = sieveRules;
-	}
-
-	public SieveActionList getSieveActions() {
-		return sieveActions;
-	}
-
-	public void setSieveActions(SieveActionList sieveActions) {
-		this.sieveActions = sieveActions;
-	}
-	
-	@Override
-	public int hashCode() {
-		return new HashCodeBuilder()
-			.append(getFilterId())
-			.append(getEnabled())
-			.append(getOrder())
-			.append(getName())
-			.append(getSieveMatch())
-			.append(getSieveRules().hashCode())
-			.append(getSieveActions().hashCode())
-			.toHashCode();
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if(obj instanceof MailFilter == false) return false;
-		if(this == obj) return true;
-		final MailFilter otherObject = (MailFilter) obj;
-		return new EqualsBuilder()
-			.append(getFilterId(), otherObject.getFilterId())
-			.isEquals();
+	public SieveVacation toSieveVacation() {
+		SieveVacation vacation = new SieveVacation();
+		vacation.setSubject(subject);
+		vacation.setMessage(message);
+		vacation.setAddresses(addresses);
+		vacation.setDaysInterval(daysInterval);
+		vacation.setActivationStartDate(activationStartDate);
+		vacation.setActivationEndDate(activationEndDate);
+		vacation.setSkipMailingLists(skipMailingLists);
+		return vacation;
 	}
 }

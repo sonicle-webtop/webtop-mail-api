@@ -32,32 +32,27 @@
  */
 package com.sonicle.webtop.mail.model;
 
+import com.sonicle.commons.web.json.JsonResult;
+import com.sonicle.mail.sieve.SieveAction;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author malbinola
  */
-public class MailFilters {
-	protected String id;
-	protected List<MailFilter> filters = new ArrayList<>();
+public class SieveActionList extends ArrayList<SieveAction> {
 	
-	public MailFilters() {}
-
-	public String getId() {
-		return id;
+	public SieveActionList() {
+		super();
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public static SieveActionList fromJson(String value) {
+		if(value == null) return null;
+		return JsonResult.GSON.fromJson(value, SieveActionList.class);
 	}
 
-	public List<MailFilter> getFilters() {
-		return filters;
-	}
-
-	public void setFilters(List<MailFilter> filters) {
-		this.filters = filters;
+	public static String toJson(SieveActionList value) {
+		if(value == null) return null;
+		return JsonResult.GSON.toJson(value, SieveActionList.class);
 	}
 }

@@ -32,46 +32,27 @@
  */
 package com.sonicle.webtop.mail.model;
 
+import com.sonicle.commons.web.json.JsonResult;
+import com.sonicle.mail.sieve.SieveRule;
 import java.util.ArrayList;
 
 /**
  *
  * @author malbinola
  */
-public class SieveAction {
-	protected Integer order;
-	protected String method;
-	protected String argument;
+public class SieveRuleList extends ArrayList<SieveRule> {
 	
-	public SieveAction() {}
-
-	public Integer getOrder() {
-		return order;
+	public SieveRuleList() {
+		super();
 	}
 
-	public void setOrder(Integer order) {
-		this.order = order;
+	public static SieveRuleList fromJson(String value) {
+		if(value == null) return null;
+		return JsonResult.GSON.fromJson(value, SieveRuleList.class);
 	}
 
-	public String getMethod() {
-		return method;
-	}
-
-	public void setMethod(String method) {
-		this.method = method;
-	}
-
-	public String getArgument() {
-		return argument;
-	}
-
-	public void setArgument(String argument) {
-		this.argument = argument;
-	}
-	
-	public static class List extends ArrayList<SieveAction> {
-		public List() {
-			super();
-		}
+	public static String toJson(SieveRuleList value) {
+		if(value == null) return null;
+		return JsonResult.GSON.toJson(value, SieveRuleList.class);
 	}
 }

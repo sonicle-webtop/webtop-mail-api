@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Sonicle S.r.l.
+ * Copyright (C) 2017 Sonicle S.r.l.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by
@@ -28,19 +28,17 @@
  * version 3, these Appropriate Legal Notices must retain the display of the
  * Sonicle logo and Sonicle copyright notice. If the display of the logo is not
  * reasonably feasible for technical reasons, the Appropriate Legal Notices must
- * display the words "Copyright (C) 2014 Sonicle S.r.l.".
+ * display the words "Copyright (C) 2017 Sonicle S.r.l.".
  */
 package com.sonicle.webtop.mail.model;
+
+import com.google.gson.annotations.SerializedName;
 
 /**
  *
  * @author malbinola
  */
 public enum MailFiltersType {
-	INCOMING("in"), OUTGOING("out");
-		
-	private final String value;
-	private MailFiltersType(String value) { this.value = value; }
-	@Override
-	public String toString() { return value; }
+	@SerializedName("in") INCOMING,
+	@SerializedName("out") OUTGOING;
 }

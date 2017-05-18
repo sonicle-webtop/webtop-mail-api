@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Sonicle S.r.l.
+ * Copyright (C) 2017 Sonicle S.r.l.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by
@@ -28,68 +28,36 @@
  * version 3, these Appropriate Legal Notices must retain the display of the
  * Sonicle logo and Sonicle copyright notice. If the display of the logo is not
  * reasonably feasible for technical reasons, the Appropriate Legal Notices must
- * display the words "Copyright (C) 2014 Sonicle S.r.l.".
+ * display the words "Copyright (C) 2017 Sonicle S.r.l.".
  */
 package com.sonicle.webtop.mail.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author malbinola
  */
-public class SieveRule {
-	protected Integer order;
-	protected String field;
-	protected String argument;
-	protected String operator;
-	protected String value;
+public class InMailFilters {
+	protected String id;
+	protected List<MailFilter> filters = new ArrayList<>();
 	
-	public SieveRule() {}
+	public InMailFilters() {}
 
-	public Integer getOrder() {
-		return order;
+	public String getId() {
+		return id;
 	}
 
-	public void setOrder(Integer order) {
-		this.order = order;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public String getField() {
-		return field;
+	public List<MailFilter> getFilters() {
+		return filters;
 	}
 
-	public void setField(String field) {
-		this.field = field;
-	}
-
-	public String getArgument() {
-		return argument;
-	}
-
-	public void setArgument(String argument) {
-		this.argument = argument;
-	}
-
-	public String getOperator() {
-		return operator;
-	}
-
-	public void setOperator(String operator) {
-		this.operator = operator;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	public void setValue(String value) {
-		this.value = value;
-	}
-	
-	public static class List extends ArrayList<SieveRule> {
-		public List() {
-			super();
-		}
+	public void setFilters(List<MailFilter> filters) {
+		this.filters = filters;
 	}
 }
