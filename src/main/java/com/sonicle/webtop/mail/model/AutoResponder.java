@@ -33,6 +33,7 @@
 package com.sonicle.webtop.mail.model;
 
 import com.sonicle.mail.sieve.SieveVacation;
+import javax.mail.internet.InternetAddress;
 import org.joda.time.DateTime;
 
 /**
@@ -119,8 +120,9 @@ public class AutoResponder {
 		this.skipMailingLists = skipMailingLists;
 	}
 	
-	public SieveVacation toSieveVacation() {
+	public SieveVacation toSieveVacation(InternetAddress from) {
 		SieveVacation vacation = new SieveVacation();
+		vacation.setFrom(from);
 		vacation.setSubject(subject);
 		vacation.setMessage(message);
 		vacation.setAddresses(addresses);
