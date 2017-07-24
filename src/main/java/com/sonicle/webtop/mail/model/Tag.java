@@ -32,18 +32,24 @@
  */
 package com.sonicle.webtop.mail.model;
 
-import com.sonicle.mail.sieve.SieveMatch;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 /**
  *
- * @author malbinola
+ * @author gbulfon
  */
 public class Tag {
 	protected String tagId;
 	protected String description;
 	protected String color;
+	
+	public Tag() {
+		
+	}
+	
+	public Tag(String tagId, String description, String color) {
+		this.tagId=tagId;
+		this.description=description;
+		this.color=color;
+	}
 
 	public String getTagId() {
 		return tagId;
