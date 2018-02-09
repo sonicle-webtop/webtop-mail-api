@@ -32,10 +32,16 @@
  */
 package com.sonicle.webtop.mail;
 
+import com.sonicle.webtop.core.sdk.WTException;
+import java.util.Collection;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMultipart;
+
 /**
  *
  * @author malbinola
  */
 public interface IMailManager {
 	
+	public boolean sendMessage(InternetAddress from, Collection<InternetAddress> to, Collection<InternetAddress> cc, Collection<InternetAddress> bcc, String subject, MimeMultipart part) throws WTException;
 }
