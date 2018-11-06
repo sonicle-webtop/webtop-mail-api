@@ -52,7 +52,6 @@ public class AutoResponder {
 	
 	public AutoResponder() {
 		enabled = false;
-		daysInterval = 7;
 		skipMailingLists = false;
 	}
 
