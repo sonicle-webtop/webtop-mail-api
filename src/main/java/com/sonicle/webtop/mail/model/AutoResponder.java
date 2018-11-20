@@ -35,6 +35,7 @@ package com.sonicle.webtop.mail.model;
 import com.sonicle.mail.sieve.SieveVacation;
 import javax.mail.internet.InternetAddress;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 /**
  *
@@ -52,7 +53,6 @@ public class AutoResponder {
 	
 	public AutoResponder() {
 		enabled = false;
-		daysInterval = 7;
 		skipMailingLists = false;
 	}
 
@@ -120,16 +120,17 @@ public class AutoResponder {
 		this.skipMailingLists = skipMailingLists;
 	}
 	
-	public SieveVacation toSieveVacation(InternetAddress from) {
+	public SieveVacation toSieveVacation(InternetAddress from, DateTimeZone timezone) {
 		SieveVacation vacation = new SieveVacation();
 		vacation.setFrom(from);
 		vacation.setSubject(subject);
 		vacation.setMessage(message);
 		vacation.setAddresses(addresses);
 		vacation.setDaysInterval(daysInterval);
-		vacation.setActivationStartDate(activationStartDate);
-		vacation.setActivationEndDate(activationEndDate);
 		vacation.setSkipMailingLists(skipMailingLists);
+		vacation.setActivationTimeZone(timezone);
+		vacation.setActivationStart(activationStartDate);
+		vacation.setActivationEnd(activationEndDate);
 		return vacation;
 	}
 }
