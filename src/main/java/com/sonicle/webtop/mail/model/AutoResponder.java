@@ -54,6 +54,7 @@ public class AutoResponder {
 	public AutoResponder() {
 		enabled = false;
 		skipMailingLists = false;
+		daysInterval = 7;
 	}
 
 	public Boolean getEnabled() {
