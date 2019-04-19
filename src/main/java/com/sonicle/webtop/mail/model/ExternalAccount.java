@@ -53,6 +53,7 @@ public class ExternalAccount {
 	protected String folderTrash;
 	protected String folderSpam;
 	protected String folderArchive;
+	protected boolean readonlyProvider;
 
 	public Integer getExternalAccountId() {
 		return externalAccountId;
@@ -173,5 +174,12 @@ public class ExternalAccount {
 	public void setFolderArchive(String folderArchive) {
 		this.folderArchive = folderArchive;
 	}
-	
+
+	public boolean isReadonlyProvider() {
+		return readonlyProvider;
+	}
+
+	public void setReadonlyProvider(boolean readonlyProvider) {
+		this.readonlyProvider = readonlyProvider;
+	}
 }
