@@ -33,7 +33,7 @@
 package com.sonicle.webtop.mail.model;
 
 import com.sonicle.mail.sieve.SieveVacation;
-import javax.mail.internet.InternetAddress;
+import jakarta.mail.internet.InternetAddress;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 

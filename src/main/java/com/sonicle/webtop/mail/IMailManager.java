@@ -35,8 +35,8 @@ package com.sonicle.webtop.mail;
 import com.sonicle.webtop.core.sdk.WTException;
 import java.io.InputStream;
 import java.util.Collection;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMultipart;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMultipart;
 
 /**
  *
