@@ -48,11 +48,11 @@ public class SieveActionList extends ArrayList<SieveAction> {
 
 	public static SieveActionList fromJson(String value) {
 		if(value == null) return null;
-		return JsonResult.GSON.fromJson(value, SieveActionList.class);
+		return JsonResult.gson().fromJson(value, SieveActionList.class);
 	}
 
 	public static String toJson(SieveActionList value) {
 		if(value == null) return null;
-		return JsonResult.GSON.toJson(value, SieveActionList.class);
+		return JsonResult.gson().toJson(value, SieveActionList.class);
 	}
 }
