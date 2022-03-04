@@ -12,4 +12,10 @@
 		<artifactId>webtop-superpom-service-api</artifactId>
 		<version>5</version>
 	</parent>
+	
+	<properties>
+		<!-- WEBTOP: service configuration -->
+		<webtop.service.baseArtifact>webtop-mail</webtop.service.baseArtifact>
+		<webtop.service.package>com.sonicle.webtop.mail</webtop.service.package>
+	</properties>
 </project>
