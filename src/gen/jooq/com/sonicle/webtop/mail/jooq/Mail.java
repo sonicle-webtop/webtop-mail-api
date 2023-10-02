@@ -44,11 +44,6 @@ public class Mail extends org.jooq.impl.SchemaImpl {
     public final com.sonicle.webtop.mail.jooq.tables.Notes NOTES = com.sonicle.webtop.mail.jooq.tables.Notes.NOTES;
 
     /**
-     * The table <code>mail.rules_copy</code>.
-     */
-    public final com.sonicle.webtop.mail.jooq.tables.RulesCopy RULES_COPY = com.sonicle.webtop.mail.jooq.tables.RulesCopy.RULES_COPY;
-
-    /**
      * The table <code>mail.scan</code>.
      */
     public final com.sonicle.webtop.mail.jooq.tables.Scan SCAN = com.sonicle.webtop.mail.jooq.tables.Scan.SCAN;
@@ -92,7 +87,6 @@ public class Mail extends org.jooq.impl.SchemaImpl {
             com.sonicle.webtop.mail.jooq.tables.Identities.IDENTITIES,
             com.sonicle.webtop.mail.jooq.tables.InFilters.IN_FILTERS,
             com.sonicle.webtop.mail.jooq.tables.Notes.NOTES,
-            com.sonicle.webtop.mail.jooq.tables.RulesCopy.RULES_COPY,
             com.sonicle.webtop.mail.jooq.tables.Scan.SCAN,
             com.sonicle.webtop.mail.jooq.tables.Tags.TAGS,
             com.sonicle.webtop.mail.jooq.tables.UsersMap.USERS_MAP);

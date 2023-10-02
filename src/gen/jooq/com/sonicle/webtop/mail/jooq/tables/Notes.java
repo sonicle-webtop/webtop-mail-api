@@ -34,7 +34,7 @@ public class Notes extends org.jooq.impl.TableImpl<com.sonicle.webtop.mail.jooq.
     /**
      * The column <code>mail.notes.message_id</code>.
      */
-    public final org.jooq.TableField<com.sonicle.webtop.mail.jooq.tables.records.NotesRecord, java.lang.String> MESSAGE_ID = createField(org.jooq.impl.DSL.name("message_id"), org.jooq.impl.SQLDataType.VARCHAR(128).nullable(false), this, "");
+    public final org.jooq.TableField<com.sonicle.webtop.mail.jooq.tables.records.NotesRecord, java.lang.String> MESSAGE_ID = createField(org.jooq.impl.DSL.name("message_id"), org.jooq.impl.SQLDataType.VARCHAR(255).nullable(false), this, "");
 
     /**
      * The column <code>mail.notes.text</code>.

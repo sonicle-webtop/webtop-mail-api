@@ -34,6 +34,7 @@ package com.sonicle.webtop.mail.model;
 
 import com.sonicle.commons.web.json.JsonResult;
 import com.sonicle.mail.sieve.SieveAction;
+import com.sonicle.mail.sieve.SieveActionMethod;
 import java.util.ArrayList;
 
 /**
@@ -47,12 +48,19 @@ public class SieveActionList extends ArrayList<SieveAction> {
 	}
 
 	public static SieveActionList fromJson(String value) {
-		if(value == null) return null;
+		if (value == null) return null;
 		return JsonResult.gson().fromJson(value, SieveActionList.class);
 	}
 
 	public static String toJson(SieveActionList value) {
-		if(value == null) return null;
+		if (value == null) return null;
 		return JsonResult.gson().toJson(value, SieveActionList.class);
+	}
+	
+	public static SieveActionList discardAndStop() {
+		SieveActionList list = new SieveActionList();
+		list.add(new SieveAction(SieveActionMethod.DISCARD));
+		list.add(new SieveAction(SieveActionMethod.STOP));
+		return list;
 	}
 }

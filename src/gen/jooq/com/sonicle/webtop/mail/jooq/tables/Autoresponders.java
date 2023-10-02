@@ -59,7 +59,7 @@ public class Autoresponders extends org.jooq.impl.TableImpl<com.sonicle.webtop.m
     /**
      * The column <code>mail.autoresponders.days_interval</code>.
      */
-    public final org.jooq.TableField<com.sonicle.webtop.mail.jooq.tables.records.AutorespondersRecord, java.lang.Short> DAYS_INTERVAL = createField(org.jooq.impl.DSL.name("days_interval"), org.jooq.impl.SQLDataType.SMALLINT.nullable(false).defaultValue(org.jooq.impl.DSL.field("1", org.jooq.impl.SQLDataType.SMALLINT)), this, "");
+    public final org.jooq.TableField<com.sonicle.webtop.mail.jooq.tables.records.AutorespondersRecord, java.lang.Short> DAYS_INTERVAL = createField(org.jooq.impl.DSL.name("days_interval"), org.jooq.impl.SQLDataType.SMALLINT.nullable(false).defaultValue(org.jooq.impl.DSL.field("7", org.jooq.impl.SQLDataType.SMALLINT)), this, "");
 
     /**
      * The column <code>mail.autoresponders.start_date</code>.
@@ -121,12 +121,12 @@ public class Autoresponders extends org.jooq.impl.TableImpl<com.sonicle.webtop.m
 
     @java.lang.Override
     public org.jooq.UniqueKey<com.sonicle.webtop.mail.jooq.tables.records.AutorespondersRecord> getPrimaryKey() {
-        return com.sonicle.webtop.mail.jooq.Keys.AUTORESPONDER_PKEY;
+        return com.sonicle.webtop.mail.jooq.Keys.AUTORESPONDERS_PKEY;
     }
 
     @java.lang.Override
     public java.util.List<org.jooq.UniqueKey<com.sonicle.webtop.mail.jooq.tables.records.AutorespondersRecord>> getKeys() {
-        return java.util.Arrays.<org.jooq.UniqueKey<com.sonicle.webtop.mail.jooq.tables.records.AutorespondersRecord>>asList(com.sonicle.webtop.mail.jooq.Keys.AUTORESPONDER_PKEY);
+        return java.util.Arrays.<org.jooq.UniqueKey<com.sonicle.webtop.mail.jooq.tables.records.AutorespondersRecord>>asList(com.sonicle.webtop.mail.jooq.Keys.AUTORESPONDERS_PKEY);
     }
 
     @java.lang.Override

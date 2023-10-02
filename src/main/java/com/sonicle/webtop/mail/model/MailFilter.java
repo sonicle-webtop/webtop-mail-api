@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Sonicle S.r.l.
+ * Copyright (C) 2014 Sonicle S.r.l.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by
@@ -28,13 +28,10 @@
  * version 3, these Appropriate Legal Notices must retain the display of the
  * Sonicle logo and Sonicle copyright notice. If the display of the logo is not
  * reasonably feasible for technical reasons, the Appropriate Legal Notices must
- * display the words "Copyright (C) 2017 Sonicle S.r.l.".
+ * display the words "Copyright (C) 2014 Sonicle S.r.l.".
  */
 package com.sonicle.webtop.mail.model;
 
-import com.sonicle.mail.sieve.SieveRule;
-import com.sonicle.mail.sieve.SieveMatch;
-import com.sonicle.mail.sieve.SieveAction;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -42,15 +39,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  *
  * @author malbinola
  */
-public class MailFilter {
+public class MailFilter extends MailFilterBase {
 	protected Integer filterId;
-	protected Boolean enabled;
-	protected Short order;
-	protected String name;
-	protected SieveMatch sieveMatch;
-	protected SieveRuleList sieveRules = new SieveRuleList();
-	protected SieveActionList sieveActions = new SieveActionList();
-
+	
 	public Integer getFilterId() {
 		return filterId;
 	}
@@ -58,75 +49,21 @@ public class MailFilter {
 	public void setFilterId(Integer filterId) {
 		this.filterId = filterId;
 	}
-
-	public Boolean getEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public Short getOrder() {
-		return order;
-	}
-
-	public void setOrder(Short order) {
-		this.order = order;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public SieveMatch getSieveMatch() {
-		return sieveMatch;
-	}
-
-	public void setSieveMatch(SieveMatch sieveMatch) {
-		this.sieveMatch = sieveMatch;
-	}
-	
-	public SieveRuleList getSieveRules() {
-		return sieveRules;
-	}
-
-	public void setSieveRules(SieveRuleList sieveRules) {
-		this.sieveRules = sieveRules;
-	}
-
-	public SieveActionList getSieveActions() {
-		return sieveActions;
-	}
-
-	public void setSieveActions(SieveActionList sieveActions) {
-		this.sieveActions = sieveActions;
-	}
 	
 	@Override
 	public int hashCode() {
 		return new HashCodeBuilder()
-			.append(getFilterId())
-			.append(getEnabled())
-			.append(getOrder())
-			.append(getName())
-			.append(getSieveMatch())
-			.append(getSieveRules().hashCode())
-			.append(getSieveActions().hashCode())
+			.append(filterId)
 			.toHashCode();
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof MailFilter == false) return false;
-		if(this == obj) return true;
-		final MailFilter otherObject = (MailFilter) obj;
+		if (obj == this) return true;
+		if (!(obj instanceof MailFilter)) return false;
+		final MailFilter otherObj = (MailFilter)obj;
 		return new EqualsBuilder()
-			.append(getFilterId(), otherObject.getFilterId())
+			.append(filterId, otherObj.filterId)
 			.isEquals();
 	}
 }

@@ -81,12 +81,12 @@ public class Scan extends org.jooq.impl.TableImpl<com.sonicle.webtop.mail.jooq.t
 
     @java.lang.Override
     public org.jooq.UniqueKey<com.sonicle.webtop.mail.jooq.tables.records.ScanRecord> getPrimaryKey() {
-        return com.sonicle.webtop.mail.jooq.Keys.MAILSCAN_PKEY;
+        return com.sonicle.webtop.mail.jooq.Keys.SCAN_PKEY;
     }
 
     @java.lang.Override
     public java.util.List<org.jooq.UniqueKey<com.sonicle.webtop.mail.jooq.tables.records.ScanRecord>> getKeys() {
-        return java.util.Arrays.<org.jooq.UniqueKey<com.sonicle.webtop.mail.jooq.tables.records.ScanRecord>>asList(com.sonicle.webtop.mail.jooq.Keys.MAILSCAN_PKEY);
+        return java.util.Arrays.<org.jooq.UniqueKey<com.sonicle.webtop.mail.jooq.tables.records.ScanRecord>>asList(com.sonicle.webtop.mail.jooq.Keys.SCAN_PKEY);
     }
 
     @java.lang.Override

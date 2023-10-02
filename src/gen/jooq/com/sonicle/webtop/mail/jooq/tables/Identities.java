@@ -105,13 +105,18 @@ public class Identities extends org.jooq.impl.TableImpl<com.sonicle.webtop.mail.
     }
 
     @java.lang.Override
+    public java.util.List<org.jooq.Index> getIndexes() {
+        return java.util.Arrays.<org.jooq.Index>asList(com.sonicle.webtop.mail.jooq.Indexes.IDENTITIES_AK1);
+    }
+
+    @java.lang.Override
     public org.jooq.UniqueKey<com.sonicle.webtop.mail.jooq.tables.records.IdentitiesRecord> getPrimaryKey() {
-        return com.sonicle.webtop.mail.jooq.Keys.IDENTITIES_PKEY1;
+        return com.sonicle.webtop.mail.jooq.Keys.IDENTITIES_PKEY;
     }
 
     @java.lang.Override
     public java.util.List<org.jooq.UniqueKey<com.sonicle.webtop.mail.jooq.tables.records.IdentitiesRecord>> getKeys() {
-        return java.util.Arrays.<org.jooq.UniqueKey<com.sonicle.webtop.mail.jooq.tables.records.IdentitiesRecord>>asList(com.sonicle.webtop.mail.jooq.Keys.IDENTITIES_PKEY1);
+        return java.util.Arrays.<org.jooq.UniqueKey<com.sonicle.webtop.mail.jooq.tables.records.IdentitiesRecord>>asList(com.sonicle.webtop.mail.jooq.Keys.IDENTITIES_PKEY);
     }
 
     @java.lang.Override

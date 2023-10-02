@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Sonicle S.r.l.
+ * Copyright (C) 2017 Sonicle S.r.l.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by
@@ -28,37 +28,80 @@
  * version 3, these Appropriate Legal Notices must retain the display of the
  * Sonicle logo and Sonicle copyright notice. If the display of the logo is not
  * reasonably feasible for technical reasons, the Appropriate Legal Notices must
- * display the words "Copyright (C) 2014 Sonicle S.r.l.".
+ * display the words "Copyright (C) 2017 Sonicle S.r.l.".
  */
 package com.sonicle.webtop.mail.model;
 
-import com.sonicle.commons.web.json.JsonResult;
-import com.sonicle.mail.sieve.SieveRule;
-import com.sonicle.mail.sieve.SieveRuleField;
-import com.sonicle.mail.sieve.SieveRuleOperator;
-import java.util.ArrayList;
+import com.sonicle.mail.sieve.SieveMatch;
 
 /**
  *
  * @author malbinola
  */
-public class SieveRuleList extends ArrayList<SieveRule> {
+public class MailFilterBase {
+	protected Short builtIn;
+	protected Boolean enabled;
+	protected Short order;
+	protected String name;
+	protected SieveMatch sieveMatch;
+	protected SieveRuleList sieveRules = new SieveRuleList();
+	protected SieveActionList sieveActions = new SieveActionList();
 	
-	public SieveRuleList() {
-		super();
+	public static final short BUILTIN_NO = 0;
+	
+	public Short getBuiltIn() {
+		return builtIn;
 	}
 
-	public static SieveRuleList fromJson(String value) {
-		if (value == null) return null;
-		return JsonResult.gson().fromJson(value, SieveRuleList.class);
+	public void setBuiltIn(Short builtIn) {
+		this.builtIn = builtIn;
 	}
 
-	public static String toJson(SieveRuleList value) {
-		if (value == null) return null;
-		return JsonResult.gson().toJson(value, SieveRuleList.class);
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public Short getOrder() {
+		return order;
+	}
+
+	public void setOrder(Short order) {
+		this.order = order;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public SieveMatch getSieveMatch() {
+		return sieveMatch;
+	}
+
+	public void setSieveMatch(SieveMatch sieveMatch) {
+		this.sieveMatch = sieveMatch;
 	}
 	
-	public static SieveRule newRuleMatchFrom(String value) {
-		return new SieveRule(SieveRuleField.FROM, SieveRuleOperator.CONTAINS, value);
+	public SieveRuleList getSieveRules() {
+		return sieveRules;
+	}
+
+	public void setSieveRules(SieveRuleList sieveRules) {
+		this.sieveRules = sieveRules;
+	}
+
+	public SieveActionList getSieveActions() {
+		return sieveActions;
+	}
+
+	public void setSieveActions(SieveActionList sieveActions) {
+		this.sieveActions = sieveActions;
 	}
 }

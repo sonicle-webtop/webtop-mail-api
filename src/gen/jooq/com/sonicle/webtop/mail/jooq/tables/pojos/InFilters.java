@@ -22,6 +22,7 @@ public class InFilters implements java.io.Serializable {
     private java.lang.String  sieveMatch;
     private java.lang.String  sieveRules;
     private java.lang.String  sieveActions;
+    private java.lang.Short   builtIn;
 
     public InFilters() {}
 
@@ -35,6 +36,7 @@ public class InFilters implements java.io.Serializable {
         this.sieveMatch = value.sieveMatch;
         this.sieveRules = value.sieveRules;
         this.sieveActions = value.sieveActions;
+        this.builtIn = value.builtIn;
     }
 
     public InFilters(
@@ -46,7 +48,8 @@ public class InFilters implements java.io.Serializable {
         java.lang.String  name,
         java.lang.String  sieveMatch,
         java.lang.String  sieveRules,
-        java.lang.String  sieveActions
+        java.lang.String  sieveActions,
+        java.lang.Short   builtIn
     ) {
         this.inFilterId = inFilterId;
         this.domainId = domainId;
@@ -57,6 +60,7 @@ public class InFilters implements java.io.Serializable {
         this.sieveMatch = sieveMatch;
         this.sieveRules = sieveRules;
         this.sieveActions = sieveActions;
+        this.builtIn = builtIn;
     }
 
     /**
@@ -185,6 +189,20 @@ public class InFilters implements java.io.Serializable {
         this.sieveActions = sieveActions;
     }
 
+    /**
+     * Getter for <code>mail.in_filters.built_in</code>.
+     */
+    public java.lang.Short getBuiltIn() {
+        return this.builtIn;
+    }
+
+    /**
+     * Setter for <code>mail.in_filters.built_in</code>.
+     */
+    public void setBuiltIn(java.lang.Short builtIn) {
+        this.builtIn = builtIn;
+    }
+
     @Override
     public String toString() {
         java.lang.StringBuilder sb = new java.lang.StringBuilder("InFilters (");
@@ -198,6 +216,7 @@ public class InFilters implements java.io.Serializable {
         sb.append(", ").append(sieveMatch);
         sb.append(", ").append(sieveRules);
         sb.append(", ").append(sieveActions);
+        sb.append(", ").append(builtIn);
 
         sb.append(")");
         return sb.toString();

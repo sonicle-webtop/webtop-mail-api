@@ -71,6 +71,11 @@ public class InFilters extends org.jooq.impl.TableImpl<com.sonicle.webtop.mail.j
      */
     public final org.jooq.TableField<com.sonicle.webtop.mail.jooq.tables.records.InFiltersRecord, java.lang.String> SIEVE_ACTIONS = createField(org.jooq.impl.DSL.name("sieve_actions"), org.jooq.impl.SQLDataType.CLOB.nullable(false), this, "");
 
+    /**
+     * The column <code>mail.in_filters.built_in</code>.
+     */
+    public final org.jooq.TableField<com.sonicle.webtop.mail.jooq.tables.records.InFiltersRecord, java.lang.Short> BUILT_IN = createField(org.jooq.impl.DSL.name("built_in"), org.jooq.impl.SQLDataType.SMALLINT.nullable(false).defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.SMALLINT)), this, "");
+
     private InFilters(org.jooq.Name alias, org.jooq.Table<com.sonicle.webtop.mail.jooq.tables.records.InFiltersRecord> aliased) {
         this(alias, aliased, null);
     }
@@ -111,7 +116,7 @@ public class InFilters extends org.jooq.impl.TableImpl<com.sonicle.webtop.mail.j
 
     @java.lang.Override
     public java.util.List<org.jooq.Index> getIndexes() {
-        return java.util.Arrays.<org.jooq.Index>asList(com.sonicle.webtop.mail.jooq.Indexes.IN_FILTERS_AK1);
+        return java.util.Arrays.<org.jooq.Index>asList(com.sonicle.webtop.mail.jooq.Indexes.IN_FILTERS_AK1, com.sonicle.webtop.mail.jooq.Indexes.IN_FILTERS_AK2, com.sonicle.webtop.mail.jooq.Indexes.IN_FILTERS_UK1);
     }
 
     @java.lang.Override
@@ -151,11 +156,11 @@ public class InFilters extends org.jooq.impl.TableImpl<com.sonicle.webtop.mail.j
     }
 
     // -------------------------------------------------------------------------
-    // Row9 type methods
+    // Row10 type methods
     // -------------------------------------------------------------------------
 
     @java.lang.Override
-    public org.jooq.Row9<java.lang.Integer, java.lang.String, java.lang.String, java.lang.Boolean, java.lang.Short, java.lang.String, java.lang.String, java.lang.String, java.lang.String> fieldsRow() {
-        return (org.jooq.Row9) super.fieldsRow();
+    public org.jooq.Row10<java.lang.Integer, java.lang.String, java.lang.String, java.lang.Boolean, java.lang.Short, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.Short> fieldsRow() {
+        return (org.jooq.Row10) super.fieldsRow();
     }
 }
