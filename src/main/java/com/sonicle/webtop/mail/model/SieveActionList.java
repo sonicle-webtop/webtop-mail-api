@@ -36,6 +36,7 @@ import com.sonicle.commons.web.json.JsonResult;
 import com.sonicle.mail.sieve.SieveAction;
 import com.sonicle.mail.sieve.SieveActionMethod;
 import java.util.ArrayList;
+import net.sf.qualitycheck.Check;
 
 /**
  *
@@ -45,6 +46,10 @@ public class SieveActionList extends ArrayList<SieveAction> {
 	
 	public SieveActionList() {
 		super();
+	}
+	
+	public SieveActionList(ArrayList<SieveAction> actions) {
+		super(actions);
 	}
 
 	public static SieveActionList fromJson(String value) {
@@ -57,10 +62,29 @@ public class SieveActionList extends ArrayList<SieveAction> {
 		return JsonResult.gson().toJson(value, SieveActionList.class);
 	}
 	
-	public static SieveActionList discardAndStop() {
-		SieveActionList list = new SieveActionList();
-		list.add(new SieveAction(SieveActionMethod.DISCARD));
-		list.add(new SieveAction(SieveActionMethod.STOP));
-		return list;
+	public static class Builder {
+		ArrayList<SieveAction> actions = new ArrayList<>();
+		
+		public Builder() {}
+		
+		public Builder fileInto(final String folder) {
+			Check.notEmpty(folder, "folder");
+			actions.add(new SieveAction(SieveActionMethod.FILE_INTO, folder));
+			return this;
+		}
+		
+		public Builder discard() {
+			actions.add(new SieveAction(SieveActionMethod.DISCARD));
+			return this;
+		}
+		
+		public Builder stop() {
+			actions.add(new SieveAction(SieveActionMethod.STOP));
+			return this;
+		}
+		
+		public SieveActionList build() {
+			return new SieveActionList(actions);
+		}
 	}
 }
