@@ -37,6 +37,8 @@ import com.sonicle.mail.sieve.SieveRule;
 import com.sonicle.mail.sieve.SieveRuleField;
 import com.sonicle.mail.sieve.SieveRuleOperator;
 import java.util.ArrayList;
+import java.util.Set;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  *
@@ -58,7 +60,13 @@ public class SieveRuleList extends ArrayList<SieveRule> {
 		return JsonResult.gson().toJson(value, SieveRuleList.class);
 	}
 	
-	public static SieveRule newRuleMatchFrom(String value) {
-		return new SieveRule(SieveRuleField.FROM, SieveRuleOperator.CONTAINS, value);
+	public static SieveRule newRuleMatchFrom(final String addressValue, final Set<String> valueUsageCache) {
+		final String sanitizedValue = StringUtils.lowerCase(StringUtils.trimToNull(addressValue));
+		if (sanitizedValue == null) return null;
+		if (valueUsageCache != null) {
+			return valueUsageCache.contains(sanitizedValue) ? null : new SieveRule(SieveRuleField.FROM, SieveRuleOperator.CONTAINS, sanitizedValue);
+		} else {
+			return new SieveRule(SieveRuleField.FROM, SieveRuleOperator.CONTAINS, sanitizedValue);
+		}
 	}
 }
