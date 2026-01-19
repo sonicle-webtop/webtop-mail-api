@@ -43,7 +43,7 @@ import jakarta.mail.internet.MimeMultipart;
  * @author malbinola
  */
 public interface IMailManager {
-	
+	public String getFolderSent();
 	public boolean sendMessage(InternetAddress from, Collection<InternetAddress> to, Collection<InternetAddress> cc, Collection<InternetAddress> bcc, String subject, MimeMultipart part) throws WTException;
 	public InputStream getAttachmentInputStream(String accountId, String foldername, long uidmessage, int idattach) throws WTException;
 }
