@@ -33,9 +33,9 @@
 package com.sonicle.webtop.mail.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.sonicle.commons.Check;
 import com.sonicle.commons.EnumUtils;
 import jakarta.mail.Flags;
-import net.sf.qualitycheck.Check;
 import org.apache.commons.lang3.StringUtils;
 
 /**

@@ -32,11 +32,11 @@
  */
 package com.sonicle.webtop.mail.model;
 
+import com.sonicle.commons.Check;
 import com.sonicle.commons.web.json.JsonResult;
 import com.sonicle.mail.sieve.SieveAction;
 import com.sonicle.mail.sieve.SieveActionMethod;
 import java.util.ArrayList;
-import net.sf.qualitycheck.Check;
 
 /**
  *
