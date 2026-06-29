@@ -44,14 +44,16 @@ public class MatchedEventInfo {
 	private final String calendarName;
 	private final Integer currentSequence;
 	private final boolean isOrganizer;
+	private final boolean isOwner;
 
 	public MatchedEventInfo(String eventInstanceId, Integer calendarId, String calendarName,
-			Integer currentSequence, boolean isOrganizer) {
+			Integer currentSequence, boolean isOrganizer, boolean isOwner) {
 		this.eventInstanceId = eventInstanceId;
 		this.calendarId = calendarId;
 		this.calendarName = calendarName;
 		this.currentSequence = currentSequence;
 		this.isOrganizer = isOrganizer;
+		this.isOwner = isOwner;
 	}
 
 	public String getEventInstanceId() {
@@ -72,5 +74,9 @@ public class MatchedEventInfo {
 
 	public boolean isOrganizer() {
 		return isOrganizer;
+	}
+
+	public boolean isOwner() {
+		return isOwner;
 	}
 }
