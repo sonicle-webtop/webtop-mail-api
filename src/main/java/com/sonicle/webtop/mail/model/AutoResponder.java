@@ -32,8 +32,15 @@
  */
 package com.sonicle.webtop.mail.model;
 
+import com.sonicle.commons.Check;
+import com.sonicle.commons.InternetAddressUtils;
+import com.sonicle.commons.LangUtils;
 import com.sonicle.mail.sieve.SieveVacation;
 import jakarta.mail.internet.InternetAddress;
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
@@ -121,12 +128,35 @@ public class AutoResponder {
 		this.skipMailingLists = skipMailingLists;
 	}
 	
-	public SieveVacation toSieveVacation(InternetAddress from, DateTimeZone timezone) {
+	public SieveVacation toSieveVacation(final InternetAddress profileAddress, final InternetAddress personalAddress, final Collection<InternetAddress> aliasAddresses, final DateTimeZone timezone) {
+		Check.notNull(profileAddress, "profileAddress");
+		Check.notNull(timezone, "timezone");
+		
+		Set<String> targetAddresses = new LinkedHashSet<>();
+		targetAddresses.add(StringUtils.lowerCase(profileAddress.getAddress()));
+		if (personalAddress != null) targetAddresses.add(StringUtils.lowerCase(personalAddress.getAddress()));
+		
+		// Add saved more addresses
+		final String moreAddressedString = getAddresses();
+		if (!StringUtils.isBlank(moreAddressedString)) {
+			final String moreAddresses[] = StringUtils.splitByWholeSeparator(StringUtils.lowerCase(StringUtils.replace(moreAddressedString, " ", "")), ",");
+			for (String moreAddress : moreAddresses) {
+				InternetAddress ia = InternetAddressUtils.toInternetAddress(moreAddress);
+				if (ia != null) targetAddresses.add(StringUtils.lowerCase(ia.getAddress()));
+			}
+		}
+		// Add alias addresses
+		if (aliasAddresses != null) {
+			for (InternetAddress ia : aliasAddresses) {
+				targetAddresses.add(StringUtils.lowerCase(ia.getAddress()));
+			}
+		}
+		
 		SieveVacation vacation = new SieveVacation();
-		vacation.setFrom(from);
+		vacation.setFrom(LangUtils.coalesce(personalAddress, profileAddress));
 		vacation.setSubject(subject);
 		vacation.setMessage(message);
-		vacation.setAddresses(addresses);
+		vacation.setAddresses(LangUtils.joinStrings(",", targetAddresses));
 		vacation.setDaysInterval(daysInterval);
 		vacation.setSkipMailingLists(skipMailingLists);
 		vacation.setActivationTimeZone(timezone);
